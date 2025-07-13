@@ -107,10 +107,10 @@ class CustomButton extends GetView {
   });
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Row(
       children: [
         Expanded(
+          
           child: TextButton(
             
             style: TextButton.styleFrom(
@@ -157,9 +157,81 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      
       height: imgHeight ?? Get.height,
       width: imgWidth ?? Get.width,
       child: Image.asset(imagePath, fit: BoxFit.cover),
     );
   }
+}
+
+
+// ############# styled bg image############
+
+class RoundedBgImage extends GetView {
+
+  final Widget bgImage;
+  final Widget widgetActions;
+  const RoundedBgImage({
+    required this.bgImage,
+    required this.widgetActions
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          bgImage,
+          Positioned(
+            top: 0,bottom: 0,
+            child: 
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: widgetActions,
+          ))
+        ],
+      ),
+    );
+  }
+}
+class WidgetActions extends GetView {
+
+  final CustomText title;
+  final String? tag;
+  final CustomButton? buton;
+  final Widget? icon;
+
+WidgetActions({required this.title, this.buton,this.icon,this.tag});
+  @override
+  Widget build(BuildContext context) {
+  return Expanded(
+    flex: 1,
+    // height: MediaQuery.of(context).size.height, // Makes it full screen height
+    child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        // top column
+        Row(
+          children: [
+            title,
+            (tag == null)? SizedBox():CustomText(content: tag!)
+          ],
+        ),
+        // bottom Column
+        Column(
+          children: [
+            Text("hhhh")
+          ],
+        )
+      ],
+    ),
+  );
+}
 }

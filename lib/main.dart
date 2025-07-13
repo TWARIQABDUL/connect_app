@@ -1,4 +1,5 @@
 import 'package:connect/pages/forget_pwd.dart';
+import 'package:connect/pages/home.dart';
 import 'package:connect/pages/landingpage.dart';
 import 'package:connect/pages/login_screen.dart';
 import 'package:connect/pages/new_password.dart';
@@ -16,6 +17,7 @@ void main() {
       initialRoute: '/welcome',
       getPages: [
         GetPage(name: '/', page: () => LandingPage()),
+        GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/welcome', page: () => WelcomePage()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/register', page: () => RegisterPage()),

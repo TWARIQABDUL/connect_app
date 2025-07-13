@@ -40,7 +40,12 @@ class FormWidget extends GetView {
             ),
             // SizedBox(height: 30),
 
-            CustomButton(buttonText: "Login"),
+            CustomButton(
+              buttonText: "Login",
+              action: (){
+                Get.offNamed('/home');
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
