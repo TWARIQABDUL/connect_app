@@ -6,119 +6,105 @@ import 'package:get/state_manager.dart';
 class NewsContainer extends GetView {
   final String locations;
   final String? tags;
-  final Map<String,dynamic> newsmeta;
-
-  const NewsContainer({required this.locations, this.tags,required this.newsmeta});
+  final Map<String, dynamic> newsmeta;
+  final TextButton? btn;
+  const NewsContainer({
+    required this.locations,
+    this.tags,
+    required this.newsmeta,
+    this.btn,
+  });
 
   @override
   Widget build(BuildContext context) {
     print("coments$newsmeta");
     return SizedBox(
       width: 290,
-      // height: 40,
 
+      // height: 40,
       child: Container(
         height: 500,
         decoration: BoxDecoration(
           color: Color(0XFFF5F5F5),
           borderRadius: BorderRadius.circular(10),
-          
-          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Column(
-                    children: [
-                      RoundedBgImage(
-                        bgImage: ImageWidget(
-                          imagePath: "images/tgth.jpeg",
-                          imgHeight: 150,
-                          // imgHeight: 50,
-                          // imgWidth: 70,
+                children: [
+                  RoundedBgImage(
+                    bgImage: ImageWidget(
+                      imagePath: "images/tgth.jpeg",
+                      imgHeight: 150,
+                      // imgHeight: 50,
+                      // imgWidth: 70,
+                    ),
+                    widgetActions: WidgetActions(
+                      windowsAction: BotomInfo(
+                        buton: btn,
+                        icon: FaIcon(
+                          FontAwesomeIcons.squareHackerNews,
+                          color: Colors.red,
+                          size: 40,
                         ),
-                        widgetActions: WidgetActions(
-                         
-                          windowsAction: BotomInfo(
-                            icon: FaIcon(
-                              FontAwesomeIcons.squareHackerNews,
-                              color: Colors.red,
-                              size: 40,
-                            
-                            ),
-                      
-                            location: CustomText(
-                              content: locations,
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              ),
-                          ),
-                          tags: tags,
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      CustomText(
-                         content: "Inspiring Stories of People Who Overcame challenges through Skate boarding",
-                         fontWeight: FontWeight.w700,
-                      ),
-                      SizedBox(height: 10,),
 
+                        location: CustomText(
+                          content: locations,
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      tags: tags,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  CustomText(
+                    content:
+                        "Inspiring Stories of People Who Overcame challenges through Skate boarding",
+                        
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(height: 10),
+
+                  Row(
+                    spacing: 10,
+                    children: [
                       Row(
-                        spacing: 10,
                         children: [
-                          Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.heart,
-                                size: 20,
-                                ),
-                              SizedBox(width: 5,),
-                              CustomText(content: "${newsmeta['likes']}k")
-          
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.bookmark,
-                                size: 20,
-                                ),
-                              SizedBox(width: 5,),
-                              CustomText(content: "${newsmeta['bookmarks']}k")
-          
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.comment,
-                                size: 20,
-                                ),
-                              SizedBox(width: 5,),
-                              CustomText(content: "${newsmeta['coment']}k")
-          
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.angular,
-                                size: 20,
-                                ),
-                              SizedBox(width: 5,),
-                              CustomText(content: "${newsmeta['reach']}k")
-          
-                            ],
-                          ),
-                          
+                          FaIcon(FontAwesomeIcons.heart, size: 20),
+                          SizedBox(width: 5),
+                          CustomText(content: "${newsmeta['likes']}k"),
                           
                         ],
-                      )
+                      ),
+                      Row(
+                        children: [
+                          FaIcon(FontAwesomeIcons.bookmark, size: 20),
+                          SizedBox(width: 5),
+                          CustomText(content: "${newsmeta['bookmarks']}k"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          FaIcon(FontAwesomeIcons.comment, size: 20),
+                          SizedBox(width: 5),
+                          CustomText(content: "${newsmeta['coment']}k"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          FaIcon(FontAwesomeIcons.angular, size: 20),
+                          SizedBox(width: 5),
+                          CustomText(content: "${newsmeta['reach']}k"),
+                        ],
+                      ),
                     ],
                   ),
-                
-              
+                ],
+              ),
             ],
           ),
         ),

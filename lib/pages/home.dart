@@ -25,6 +25,12 @@ class HomePage extends GetView {
               ),
 
               widgetActions: WidgetActions(
+                butons: CustomButton(
+                  buttonText: "Read More",
+                  action: () {
+                    Get.toNamed("/readarticle");
+                  },
+                ),
                 title: CustomText(
                   content: "Don't miss \nthe hot news to day",
                   color: Colors.white,
@@ -32,7 +38,6 @@ class HomePage extends GetView {
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
-                
               ),
             ),
           ),
@@ -48,48 +53,83 @@ class HomePage extends GetView {
                   locations: "CNN News",
                   tags: "Sport",
                   newsmeta: {
-                    "coment":12,
-                    "likes":20,
-                    "bookmarks":30,
-                    "reach":19
-                    },
+                    "coment": 12,
+                    "likes": 20,
+                    "bookmarks": 30,
+                    "reach": 19,
+                  },
                 ),
                 SizedBox(width: 16),
                 NewsContainer(
                   locations: "IDN News",
                   tags: "Sport",
                   newsmeta: {
-                    "coment":12,
-                    "likes":20,
-                    "bookmarks":30,
-                    "reach":19
-                    },
+                    "coment": 12,
+                    "likes": 20,
+                    "bookmarks": 30,
+                    "reach": 19,
+                  },
                 ),
                 SizedBox(width: 16),
                 NewsContainer(
                   locations: "TEST loation",
                   tags: "Sport",
                   newsmeta: {
-                    "coment":102,
-                    "likes":200,
-                    "bookmarks":300,
-                    "reach":193
-                    },
+                    "coment": 102,
+                    "likes": 200,
+                    "bookmarks": 300,
+                    "reach": 193,
+                  },
                 ),
                 SizedBox(width: 16),
                 NewsContainer(
                   locations: "Here",
                   tags: "Sport",
                   newsmeta: {
-                    "coment":12,
-                    "likes":20,
-                    "bookmarks":30,
-                    "reach":19
-                    },
+                    "coment": 12,
+                    "likes": 20,
+                    "bookmarks": 30,
+                    "reach": 19,
+                  },
                 ),
               ],
             ),
           ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  content: "Treding",
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                ),
+                CustomText(
+                  content: "See More",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                ),
+              ],
+            ),
+          ),
+          NewsBox(
+            artTitle: CustomText(
+              content: "Free Palestine",
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            iconn: Icon(Icons.more_vert),
+            time: CustomText(
+              content: "Politics 2 hours ago",
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 167, 166, 166),
+            ),
+          ),
+          
+          // NewsBox(),
         ],
       ),
     );

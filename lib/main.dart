@@ -4,6 +4,7 @@ import 'package:connect/pages/landingpage.dart';
 import 'package:connect/pages/login_screen.dart';
 import 'package:connect/pages/new_password.dart';
 import 'package:connect/pages/otp.dart';
+import 'package:connect/pages/readarticle.dart';
 import 'package:connect/pages/register.dart';
 import 'package:connect/pages/welcomepage.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ void main() {
       getPages: [
         GetPage(name: '/', page: () => LandingPage()),
         GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/readarticle', page: () => Readarticle()),
         GetPage(name: '/welcome', page: () => WelcomePage()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/register', page: () => RegisterPage()),

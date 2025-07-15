@@ -21,6 +21,8 @@ class CustomText extends GetView {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Text(
+      
+      // overflow: TextOverflow.fade,
       content,
       style: GoogleFonts.getFont(
         fontFamily ?? "Lato",
@@ -188,8 +190,8 @@ class WidgetActions extends GetView {
   final String? tags;
   final BotomInfo? windowsAction;
   final double? width;
-
-  WidgetActions({this.title,  this.tags, this.width, this.windowsAction});
+  final CustomButton? butons;
+  WidgetActions({this.title,  this.tags, this.width, this.windowsAction,this.butons});
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -217,7 +219,7 @@ class WidgetActions extends GetView {
               ),
               // bottom Column
               Column(children: [
-                  
+                  butons??SizedBox(),
                   windowsAction?? SizedBox()
                 ],
               ),
@@ -258,6 +260,48 @@ class BotomInfo extends GetView {
           ],
         ),
       ],
+    );
+  }
+}
+
+class NewsBox extends GetView {
+  final Widget artTitle,time,iconn;
+
+  // final Widget iconn;
+
+  const NewsBox({
+    
+    required this.artTitle,
+    required this.time,
+    required this.iconn
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                     artTitle,
+                      time
+                              
+                    ],
+                  ),
+                ),
+                iconn
+              ],
+            ),
+          )
+
+        ],
     );
   }
 }
