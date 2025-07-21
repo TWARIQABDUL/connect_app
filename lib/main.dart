@@ -1,3 +1,4 @@
+// import 'package:connect/contr0ller/newscontroller.dart';
 import 'package:connect/pages/forget_pwd.dart';
 import 'package:connect/pages/home.dart';
 import 'package:connect/pages/landingpage.dart';

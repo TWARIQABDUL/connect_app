@@ -12,9 +12,12 @@ class WelcomePage extends GetView {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 50, 10, 20),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,  // Align text center horizontally
           children: [
-            CustomText(
+            Column(
+              children: [
+                CustomText(
               content: "Welcome To Connect",
               fontSize: 30,
               fontWeight: FontWeight.w800,
@@ -30,15 +33,13 @@ class WelcomePage extends GetView {
             ),
             SizedBox(height: 20,),
             ItemBox(itemTitle: "News Personalization",icon: Icons.ac_unit_rounded,),
-            Spacer(),
+              ],
+            ),
+            // Spacer(),
             CustomButton(buttonText: "Continue",action: (){
               Get.offAllNamed('/login');
               // Navigator.pushNamed(context, "/login");
             },)
-
-           
-
-            
           ],
         ),
       ),

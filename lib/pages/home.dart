@@ -10,10 +10,42 @@ class HomePage extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: [
-          
-        ],
+      appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            spacing: 10,
+            // Important for fitting inside AppBar
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.red,
+                ),
+                height: 50,
+                width: 50,
+                child: ClipOval(
+                  child: Image.asset('images/tgth.jpeg', fit: BoxFit.cover),
+                ),
+              ),
+
+              Expanded(
+                child: SearchBar(
+                  leading: Icon(Icons.search),
+                  onTapOutside: (event) {
+                    // print("you can exit keyboard");
+                  },
+                ),
+              ),
+              Icon(
+              Icons.notifications_none_sharp
+              )
+              
+            ],
+          ),
+        ),
       ),
+
       body: ListView(
         children: [
           Padding(
@@ -128,7 +160,7 @@ class HomePage extends GetView {
               color: Color.fromARGB(255, 167, 166, 166),
             ),
           ),
-          
+
           // NewsBox(),
         ],
       ),

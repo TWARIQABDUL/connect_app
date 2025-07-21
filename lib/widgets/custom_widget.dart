@@ -109,9 +109,7 @@ class CustomButton extends GetView {
   });
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        TextButton(
+    return TextButton(
           style: TextButton.styleFrom(
             backgroundColor: backGroundColor ?? Color(0XFF33691E),
             // foregroundColor: Colors.red
@@ -137,8 +135,7 @@ class CustomButton extends GetView {
               ),
             ],
           ),
-        ),
-      ],
+       
     );
   }
 }
@@ -219,7 +216,11 @@ class WidgetActions extends GetView {
               ),
               // bottom Column
               Column(children: [
-                  butons??SizedBox(),
+                  Row(
+                    children: [
+                      butons??SizedBox(),
+                    ],
+                  ),
                   windowsAction?? SizedBox()
                 ],
               ),
