@@ -1,3 +1,4 @@
+import 'package:connect/contr0ller/loginController.dart';
 import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class FormWidget extends GetView {
+final LoginController loginController = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
@@ -41,12 +44,17 @@ class FormWidget extends GetView {
             ),
             // SizedBox(height: 30),
 
-            CustomButton(
-              buttonText: "Login",
+            Obx((){
+              return CustomButton(
+              buttonText: loginController.loading.value? "Loading":"Login",
               action: (){
-                Get.offNamed('/home');
+                loginController.login();
               },
-            ),
+              loading: loginController.loading.value,
+
+            );
+            }),
+           
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

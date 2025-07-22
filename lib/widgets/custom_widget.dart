@@ -99,6 +99,7 @@ class CustomButton extends GetView {
   final VoidCallback? action;
   final IconData? icon;
   final Color? backGroundColor, iconColor, color;
+  final bool? loading;
 
   CustomButton({
     required this.buttonText,
@@ -107,16 +108,21 @@ class CustomButton extends GetView {
     this.backGroundColor,
     this.iconColor,
     this.color,
+    this.loading
+
   });
   @override
   Widget build(BuildContext context) {
     return TextButton(
+
           style: TextButton.styleFrom(
             backgroundColor: backGroundColor ?? Color(0XFF33691E),
             // foregroundColor: Colors.red
           ),
 
-          onPressed: action,
+          
+
+          onPressed: (loading == null || loading == false)?action:(){},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -128,12 +134,16 @@ class CustomButton extends GetView {
                       iconWeight: 2,
                     )
                   : SizedBox()),
-              CustomText(
+              ((loading == null || loading ==false) ) ? CustomText(
                 content: buttonText,
                 color: color ?? Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-              ),
+              ):SizedBox(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              )
             ],
           ),
        

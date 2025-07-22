@@ -1,5 +1,4 @@
-import 'package:connect/contr0ller/hashtag_cootroller.dart';
-import 'package:connect/model/newsModel.dart';
+import 'package:connect/contr0ller/news_controler.dart';
 import 'package:connect/widgets/categories.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:connect/widgets/news-preview-container.dart';
@@ -7,10 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView {
-
+  final NewsControler newsControler = Get.put(NewsControler());
   // final HashTagsModel hashTagsModel =Get.put(HashTagsControllers())
   // const HomePage({super.key});
-
+  List<Map> persons = [
+    {
+      "name":"Twariq",
+      "age":20,
+      "sex":"female"
+    },
+     {
+      "name":"James",
+      "age":20,
+      "sex":"female"
+    },
+  ];
   @override
   Widget build(BuildContext context) {
 
@@ -19,9 +29,11 @@ class HomePage extends GetView {
         title: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
+
             spacing: 10,
             // Important for fitting inside AppBar
             children: [
+              
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
@@ -78,58 +90,74 @@ class HomePage extends GetView {
               ),
             ),
           ),
-
+          
           CategoriesList(),
           SizedBox(
             height: 300,
-            child: ListView(
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              children: const [
-                NewsContainer(
-                  locations: "CNN News",
-                  tags: "Sport",
+              itemCount: newsControler.newsLists.length,
+              itemBuilder: (context, index){
+                final news = newsControler.newsLists[index];
+                return NewsContainer(
+                  image: news.imagepath,
+                  locations: news.title,
+                  tags: news.tag,
                   newsmeta: {
-                    "coment": 12,
-                    "likes": 20,
-                    "bookmarks": 30,
-                    "reach": 19,
+                    "coment": news.comments,
+                    "likes": news.likes,
+                    "bookmarks": news.bookMark,
+                    "reach": news.populality,
                   },
-                ),
-                SizedBox(width: 16),
-                NewsContainer(
-                  locations: "IDN News",
-                  tags: "Sport",
-                  newsmeta: {
-                    "coment": 12,
-                    "likes": 20,
-                    "bookmarks": 30,
-                    "reach": 19,
-                  },
-                ),
-                SizedBox(width: 16),
-                NewsContainer(
-                  locations: "TEST loation",
-                  tags: "Sport",
-                  newsmeta: {
-                    "coment": 102,
-                    "likes": 200,
-                    "bookmarks": 300,
-                    "reach": 193,
-                  },
-                ),
-                SizedBox(width: 16),
-                NewsContainer(
-                  locations: "Here",
-                  tags: "Sport",
-                  newsmeta: {
-                    "coment": 12,
-                    "likes": 20,
-                    "bookmarks": 30,
-                    "reach": 19,
-                  },
-                ),
-              ],
+                );
+              },
+              // scrollDirection: Axis.horizontal,
+              // padding: const EdgeInsets.symmetric(horizontal: 8),
+              // children: const [
+                // NewsContainer(
+                //   locations: "CNN News",
+                //   tags: "Sport",
+                //   newsmeta: {
+                //     "coment": 12,
+                //     "likes": 20,
+                //     "bookmarks": 30,
+                //     "reach": 19,
+                //   },
+                // ),
+                // SizedBox(width: 16),
+                // NewsContainer(
+                //   locations: "IDN News",
+                //   tags: "Sport",
+                //   newsmeta: {
+                //     "coment": 12,
+                //     "likes": 20,
+                //     "bookmarks": 30,
+                //     "reach": 19,
+                //   },
+                // ),
+                // SizedBox(width: 16),
+                // NewsContainer(
+                //   locations: "TEST loation",
+                //   tags: "Sport",
+                //   newsmeta: {
+                //     "coment": 102,
+                //     "likes": 200,
+                //     "bookmarks": 300,
+                //     "reach": 193,
+                //   },
+                // ),
+                // SizedBox(width: 16),
+                // NewsContainer(
+                //   locations: "Here",
+                //   tags: "Sport",
+                //   newsmeta: {
+                //     "coment": 12,
+                //     "likes": 20,
+                //     "bookmarks": 30,
+                //     "reach": 19,
+                //   },
+                // ),
+             // ],
             ),
           ),
           SizedBox(height: 10),

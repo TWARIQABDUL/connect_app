@@ -1,14 +1,19 @@
 import 'package:flutter/widgets.dart';
 
-class HashTagsModel {
-  final int? id;
-  final String? title;
+class Newsmodel {
+  final Widget icon;
+  final String title,header,tag,imagepath;
+  final int likes,bookMark,comments,populality;
 
-  final Widget? icon;
-
-  HashTagsModel({
-    this.id,
-    this.title,
-    this.icon,
+  Newsmodel({
+    required this.tag,
+    required this.icon,
+    required this.title,
+    required this.header,
+    required this.likes,
+    required this.bookMark,
+    required this.comments,
+    required this.populality,
+    required this.imagepath
   });
 }

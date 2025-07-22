@@ -1,9 +1,9 @@
+import 'package:connect/contr0ller/loginController.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:connect/widgets/form.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-
 class LoginScreen extends GetView {
 
   @override

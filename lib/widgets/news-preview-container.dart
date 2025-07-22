@@ -5,7 +5,7 @@ import 'package:get/state_manager.dart';
 
 class NewsContainer extends GetView {
   final String locations;
-  final String? tags;
+  final String? tags,image;
   final Map<String, dynamic> newsmeta;
   final TextButton? btn;
   const NewsContainer({
@@ -13,6 +13,7 @@ class NewsContainer extends GetView {
     this.tags,
     required this.newsmeta,
     this.btn,
+    this.image
   });
 
   @override
@@ -36,7 +37,7 @@ class NewsContainer extends GetView {
                 children: [
                   RoundedBgImage(
                     bgImage: ImageWidget(
-                      imagePath: "images/tgth.jpeg",
+                      imagePath: image??"images/tgth.jpeg",
                       imgHeight: 150,
                       // imgHeight: 50,
                       // imgWidth: 70,
