@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -140,6 +141,62 @@ class CustomButton extends GetView {
   }
 }
 
+//################ Fa Icon##############
+
+class CustomFaButton extends GetView {
+  final String buttonText;
+  final VoidCallback? action;
+  final Widget? icon;
+  final Color? backGroundColor, iconColor, color;
+
+  CustomFaButton({
+    required this.buttonText,
+    this.action,
+    this.icon,
+    this.backGroundColor,
+    this.iconColor,
+    this.color,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+          style: TextButton.styleFrom(
+            side: BorderSide(
+              color: const Color.fromARGB(255, 0, 0, 0),
+            ),
+            backgroundColor: backGroundColor ?? Color(0XFF33691E),
+            elevation: 2,
+            
+            // foregroundColor: Colors.red
+          ),
+
+          onPressed: action,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              (icon != null
+                  ? SvgPicture.asset('images/google.svg', width: 30,)
+                  // CustomIcon(
+                  //     icon: icon,
+                  //     color: iconColor ?? Colors.black,
+                  //     size: 40,
+                  //     iconWeight: 2,
+                  //   )
+                  : SizedBox()),
+                  SizedBox(width: 10,),
+              CustomText(
+                content: buttonText,
+                color: color ?? Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ],
+          ),
+       
+    );
+  }
+}
+
 //################ image Widget ########
 
 class ImageWidget extends StatelessWidget {
@@ -157,6 +214,7 @@ class ImageWidget extends StatelessWidget {
     );
   }
 }
+
 
 // ############# styled bg image############
 

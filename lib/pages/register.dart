@@ -2,6 +2,7 @@ import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends GetView {
@@ -36,13 +37,13 @@ class RegisterPage extends GetView {
                         inputContent: "Full Name",
                         inputName: "name",
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 20),
 
                       CustomTextInput(
                         inputContent: "Email or Phone Number",
                         inputName: "phoneNb",
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 20),
 
                       CustomTextInput(
                         inputContent: "Password",
@@ -50,7 +51,7 @@ class RegisterPage extends GetView {
                         securedInput: true,
                       ),
 
-                      SizedBox(height: 30),
+                      SizedBox(height: 20),
 
                       CustomTextInput(
                         inputContent: "Re-type Password",
@@ -58,7 +59,7 @@ class RegisterPage extends GetView {
                         securedInput: true,
                       ),
 
-                      SizedBox(height: 30),
+                      SizedBox(height: 20),
                       // SizedBox(height: 30),
                       CustomButton(buttonText: "Register"),
                     ],
@@ -89,13 +90,20 @@ class RegisterPage extends GetView {
                     backGroundColor: Colors.black,
                     iconColor: Colors.white,
                   ),
-                  CustomButton(
+                      SizedBox(height: 20),
+
+                  CustomFaButton(
                     buttonText: "Sign Up with Google",
-                    icon: Icons.apple,
+                    icon: FaIcon(
+                      FontAwesomeIcons.google,
+                      color: Colors.red,
+                      size: 30,
+                    ),
                     backGroundColor: Colors.white,
-                    iconColor: Colors.black,
-                    color: Colors.amber,
+                    // iconColor: Colors.black,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
+                  
                 ],
               ),
             ],

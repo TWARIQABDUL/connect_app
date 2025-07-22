@@ -1,3 +1,5 @@
+import 'package:connect/contr0ller/hashtag_cootroller.dart';
+import 'package:connect/model/newsModel.dart';
 import 'package:connect/widgets/categories.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:connect/widgets/news-preview-container.dart';
@@ -5,10 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView {
-  const HomePage({super.key});
+
+  // final HashTagsModel hashTagsModel =Get.put(HashTagsControllers())
+  // const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -40,7 +45,7 @@ class HomePage extends GetView {
               Icon(
               Icons.notifications_none_sharp
               )
-              
+
             ],
           ),
         ),
