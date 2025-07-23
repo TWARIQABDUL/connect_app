@@ -94,12 +94,16 @@ class HomePage extends GetView {
           CategoriesList(),
           SizedBox(
             height: 300,
-            child: ListView.builder(
+            child: Obx((){
+              return ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: newsControler.newsLists.length,
+              itemCount: newsControler.myNewsList.length,
               itemBuilder: (context, index){
-                final news = newsControler.newsLists[index];
-                return NewsContainer(
+                // newsControler.sortnews("Bussiness");
+                final news = newsControler.myNewsList[index];
+                // print("the lenght${sortedNewes[index]}");
+                // final news = sortedNewes.;
+                return  NewsContainer(
                   image: news.imagepath,
                   locations: news.title,
                   tags: news.tag,
@@ -111,55 +115,12 @@ class HomePage extends GetView {
                   },
                 );
               },
-              // scrollDirection: Axis.horizontal,
-              // padding: const EdgeInsets.symmetric(horizontal: 8),
-              // children: const [
-                // NewsContainer(
-                //   locations: "CNN News",
-                //   tags: "Sport",
-                //   newsmeta: {
-                //     "coment": 12,
-                //     "likes": 20,
-                //     "bookmarks": 30,
-                //     "reach": 19,
-                //   },
-                // ),
-                // SizedBox(width: 16),
-                // NewsContainer(
-                //   locations: "IDN News",
-                //   tags: "Sport",
-                //   newsmeta: {
-                //     "coment": 12,
-                //     "likes": 20,
-                //     "bookmarks": 30,
-                //     "reach": 19,
-                //   },
-                // ),
-                // SizedBox(width: 16),
-                // NewsContainer(
-                //   locations: "TEST loation",
-                //   tags: "Sport",
-                //   newsmeta: {
-                //     "coment": 102,
-                //     "likes": 200,
-                //     "bookmarks": 300,
-                //     "reach": 193,
-                //   },
-                // ),
-                // SizedBox(width: 16),
-                // NewsContainer(
-                //   locations: "Here",
-                //   tags: "Sport",
-                //   newsmeta: {
-                //     "coment": 12,
-                //     "likes": 20,
-                //     "bookmarks": 30,
-                //     "reach": 19,
-                //   },
-                // ),
-             // ],
-            ),
+             
+            );
+            }
+            )//list view end here
           ),
+          
           SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),

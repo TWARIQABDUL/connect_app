@@ -1,9 +1,12 @@
+import 'package:connect/contr0ller/news_controler.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 
 class CategoriesList extends GetView {
-  const CategoriesList({super.key});
+  final NewsControler newsControler = Get.put(NewsControler());
+  CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +22,16 @@ class CategoriesList extends GetView {
             Row(
               spacing: 10,
               children: [
-                CustomButton(
+                
+                  CustomButton(
                   buttonText: "All",
                   backGroundColor: Colors.black,
                   color: Colors.white,
+                  action: (){
+                    newsControler.sortnews("Bussiness");
+                  },
                   ),
+                  
                   CustomButton(
                   buttonText: "Sport",
                   backGroundColor: Color(0XFFF5F5F5),

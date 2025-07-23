@@ -122,7 +122,7 @@ class CustomButton extends GetView {
 
           
 
-          onPressed: (loading == null || loading == false)?action:(){},
+          onPressed: action,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
