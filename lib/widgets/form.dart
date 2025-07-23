@@ -12,6 +12,7 @@ final LoginController loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
+      key: loginController.formKey,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -39,6 +40,7 @@ final LoginController loginController = Get.put(LoginController());
                     color: Color(0XFF1B5E20),
                     fontWeight: FontWeight.w400,
                   ),
+                  
                 ),
               ],
             ),
