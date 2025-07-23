@@ -1,4 +1,3 @@
-import 'package:connect/contr0ller/loginController.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:connect/widgets/form.dart';
 import 'package:flutter/material.dart';
