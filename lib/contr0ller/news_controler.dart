@@ -38,7 +38,7 @@ class NewsControler {
       imagepath: "images/tgth.jpeg",
     ),
     Newsmodel(
-      tag: "Bussiness",
+      tag: "Entertainment",
       icon: FaIcon(
         FontAwesomeIcons.squareHackerNews,
         color: Colors.red,
@@ -54,7 +54,7 @@ class NewsControler {
       imagepath: "images/tgth.jpeg",
     ),
     Newsmodel(
-      tag: "Bussiness",
+      tag: "Politics",
       icon: FaIcon(
         FontAwesomeIcons.squareHackerNews,
         color: Colors.red,

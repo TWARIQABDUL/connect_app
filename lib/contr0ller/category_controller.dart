@@ -1,13 +1,12 @@
 import 'package:connect/model/category_model.dart';
 
-class Categories {
+class CategoriesController {
   
   List<CategoryModel> categories = [
-    CategoryModel(title: "Sport"),
-    CategoryModel(title: "News"),
+    CategoryModel(title: "Sport",),
+    CategoryModel(title: "Bussiness"),
     CategoryModel(title: "Politics"),
     CategoryModel(title: "Entertainment"),
-    CategoryModel(title: "Art"),
   ];
 
 

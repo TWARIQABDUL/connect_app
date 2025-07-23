@@ -99,10 +99,8 @@ class HomePage extends GetView {
               scrollDirection: Axis.horizontal,
               itemCount: newsControler.myNewsList.length,
               itemBuilder: (context, index){
-                // newsControler.sortnews("Bussiness");
                 final news = newsControler.myNewsList[index];
-                // print("the lenght${sortedNewes[index]}");
-                // final news = sortedNewes.;
+
                 return  NewsContainer(
                   image: news.imagepath,
                   locations: news.title,
