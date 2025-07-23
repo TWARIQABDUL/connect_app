@@ -7,20 +7,6 @@ import 'package:get/get.dart';
 
 class HomePage extends GetView {
   final NewsControler newsControler = Get.put(NewsControler());
-  // final HashTagsModel hashTagsModel =Get.put(HashTagsControllers())
-  // const HomePage({super.key});
-  List<Map> persons = [
-    {
-      "name":"Twariq",
-      "age":20,
-      "sex":"female"
-    },
-     {
-      "name":"James",
-      "age":20,
-      "sex":"female"
-    },
-  ];
   @override
   Widget build(BuildContext context) {
 
@@ -31,7 +17,6 @@ class HomePage extends GetView {
           child: Row(
 
             spacing: 10,
-            // Important for fitting inside AppBar
             children: [
               
               Container(
