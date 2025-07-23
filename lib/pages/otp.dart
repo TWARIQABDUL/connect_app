@@ -17,12 +17,14 @@ class OtpValidation extends GetView {
       ),
       body: Column(
         children: [
-          FormBuilder(
-            child: Padding(
-              padding: EdgeInsets.all(8),
+          Flexible(
+            child: FormBuilder(
               child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                 children: [
                   Column(
+                          
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +50,7 @@ class OtpValidation extends GetView {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  // SizedBox(height: 20),
                   CustomButton(
                     buttonText: "Submit",
                     action: () {

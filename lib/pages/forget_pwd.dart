@@ -19,28 +19,33 @@ class ForgetPasswordPage extends GetView {
       ),
       body: Column(
         children: [
-          FormBuilder(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Column(
-                children: [
-                  Column(
-                    children: [
-                      CustomTextInput(
-                    inputContent: "Type in Your Email" , 
-                    inputName: "email"),
-                    ],
-                  ),
-                  SizedBox(height: 20,),
-                  CustomButton(buttonText: "Submit",
-                  action: (){
-                    Get.toNamed('/otp');
-                  },
-                  
-                  )
-                ],
-              ),
-            )
+          Flexible(
+            child: FormBuilder(
+              
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            
+                  children: [
+                    Column(
+                      children: [
+                        CustomTextInput(
+                      inputContent: "Type in Your Email" , 
+                      inputName: "email"),
+                      ],
+                    ),
+                    // SizedBox(height: 20,),
+                    CustomButton(buttonText: "Submit",
+                    action: (){
+                      Get.toNamed('/otp');
+                    },
+                    
+                    )
+                  ],
+                ),
+              )
+            ),
           )
         ], 
       ),
