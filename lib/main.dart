@@ -16,7 +16,7 @@ void main() {
     GetMaterialApp(
       color: Color.fromARGB(255, 226, 4, 4),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/welcome',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LandingPage()),
         GetPage(name: '/home', page: () => HomePage()),

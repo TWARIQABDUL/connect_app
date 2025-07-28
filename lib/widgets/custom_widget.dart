@@ -256,14 +256,15 @@ class WidgetActions extends GetView {
   final BotomInfo? windowsAction;
   final double? width;
   final CustomButton? butons;
-  WidgetActions({this.title,  this.tags, this.width, this.windowsAction,this.butons});
+  final double? opacity;
+  WidgetActions({this.title,  this.tags, this.width, this.windowsAction,this.butons,this.opacity});
   @override
   Widget build(BuildContext context) {
     return Expanded(
       // height: MediaQuery.of(context).size.height, // Makes it full screen height
       child: Container(
         width: Get.width,
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.8)),
+        decoration: BoxDecoration(color: Colors.black.withValues(alpha: opacity??0,)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

@@ -1,24 +1,22 @@
 import 'package:connect/contr0ller/news_controler.dart';
 import 'package:connect/widgets/categories.dart';
 import 'package:connect/widgets/custom_widget.dart';
-import 'package:connect/widgets/news-preview-container.dart';
+import 'package:connect/widgets/news_preview_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView {
   final NewsControler newsControler = Get.put(NewsControler());
+  List<String> list = <String>['One', 'Two', 'Three', 'Four'];
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
-
             spacing: 10,
             children: [
-              
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
@@ -39,10 +37,25 @@ class HomePage extends GetView {
                   },
                 ),
               ),
-              Icon(
-              Icons.notifications_none_sharp
-              )
+              MenuBar(children: list.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),),
+              // DropdownButton(
+              //   items: list.map<DropdownMenuItem<String>>((String value) {
+              //     return DropdownMenuItem<String>(
+              //       value: value,
+              //       child: Text(value),
+              //     );
+              //   }).toList(),
+              //   onChanged: (String? value){},
+              // ),
 
+              // Icon(
+              // Icons.notifications_none_sharp
+              // )
             ],
           ),
         ),
@@ -59,6 +72,7 @@ class HomePage extends GetView {
               ),
 
               widgetActions: WidgetActions(
+                opacity: 0.7,
                 butons: CustomButton(
                   buttonText: "Read More",
                   action: () {
@@ -75,35 +89,33 @@ class HomePage extends GetView {
               ),
             ),
           ),
-          
+
           CategoriesList(),
           SizedBox(
             height: 300,
-            child: Obx((){
+            child: Obx(() {
               return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: newsControler.myNewsList.length,
-              itemBuilder: (context, index){
-                final news = newsControler.myNewsList[index];
+                scrollDirection: Axis.horizontal,
+                itemCount: newsControler.myNewsList.length,
+                itemBuilder: (context, index) {
+                  final news = newsControler.myNewsList[index];
 
-                return  NewsContainer(
-                  image: news.imagepath,
-                  locations: news.title,
-                  tags: news.tag,
-                  newsmeta: {
-                    "coment": news.comments,
-                    "likes": news.likes,
-                    "bookmarks": news.bookMark,
-                    "reach": news.populality,
-                  },
-                );
-              },
-             
-            );
-            }
-            )//list view end here
+                  return NewsContainer(
+                    image: news.imagepath,
+                    locations: news.title,
+                    tags: news.tag,
+                    newsmeta: {
+                      "coment": news.comments,
+                      "likes": news.likes,
+                      "bookmarks": news.bookMark,
+                      "reach": news.populality,
+                    },
+                  );
+                },
+              );
+            }), //list view end here
           ),
-          
+
           SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),

@@ -1,11 +1,15 @@
+import 'package:connect/contr0ller/bookmark_controller.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:connect/widgets/display_formated_post.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 class Readarticle extends GetView {
-  const Readarticle({super.key});
+  final BookmarkController bookmarkController = Get.put(BookmarkController());
+
+  Readarticle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,23 @@ Finally, always keep in mind, "You miss 100% of the shots you don’t take."
         actions: [
           Row(
             children: [
-              Icon(Icons.bookmark, size: 30),
+              TextButton(
+                onPressed: () {
+                  bookmarkController.addBookMark();
+                },
+                
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero, // Set this
+                  padding: EdgeInsets.zero,
+                ),
+                child: Obx((){
+                  return Icon(
+                  Icons.bookmark,
+                  color: bookmarkController.ismarked.value?Colors.amber:Colors.black,
+                  size: 30,
+                  );})
+              ),
+              // Icon(Icons.bookmark, size: 30),
               SizedBox(width: 10),
               Icon(Icons.more_vert, size: 30),
             ],
@@ -45,6 +65,7 @@ Finally, always keep in mind, "You miss 100% of the shots you don’t take."
                 // imgWidth: 70,
               ),
               widgetActions: WidgetActions(
+                opacity: 0.7,
                 windowsAction: BotomInfo(
                   // buton: btn,
                   icon: FaIcon(

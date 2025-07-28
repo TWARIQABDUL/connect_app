@@ -8,7 +8,7 @@ class NewsContainer extends GetView {
   final String? tags,image;
   final Map<String, dynamic> newsmeta;
   final TextButton? btn;
-  const NewsContainer({
+ NewsContainer({
     required this.locations,
     this.tags,
     required this.newsmeta,
@@ -18,7 +18,7 @@ class NewsContainer extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    print("coments$newsmeta");
+    // print("coments$newsmeta");
     return SizedBox(
       width: 290,
 
@@ -43,6 +43,7 @@ class NewsContainer extends GetView {
                       // imgWidth: 70,
                     ),
                     widgetActions: WidgetActions(
+                      opacity: 0.7,
                       windowsAction: BotomInfo(
                         buton: btn,
                         icon: FaIcon(
