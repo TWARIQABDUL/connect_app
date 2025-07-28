@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class HomePage extends GetView {
   final NewsControler newsControler = Get.put(NewsControler());
-  List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+  // List<String> list = <String>['One', 'Two', 'Three', 'Four'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +37,12 @@ class HomePage extends GetView {
                   },
                 ),
               ),
-              MenuBar(children: list.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),),
+              // MenuBar(children: list.map<DropdownMenuItem<String>>((String value) {
+              //     return DropdownMenuItem<String>(
+              //       value: value,
+              //       child: Text(value),
+              //     );
+              //   }).toList(),),
               // DropdownButton(
               //   items: list.map<DropdownMenuItem<String>>((String value) {
               //     return DropdownMenuItem<String>(
