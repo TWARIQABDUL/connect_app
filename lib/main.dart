@@ -8,6 +8,8 @@ import 'package:connect/pages/otp.dart';
 import 'package:connect/pages/readarticle.dart';
 import 'package:connect/pages/register.dart';
 import 'package:connect/pages/welcomepage.dart';
+// import 'package:connect/pages/camerapage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,9 +29,7 @@ void main() {
         GetPage(name: '/resetpwd', page: () => ForgetPasswordPage()),
         GetPage(name: '/otp', page: () => OtpValidation()),
         GetPage(name: '/newpassword', page: () => NewPasswordPage()),
-
-
-
+        // GetPage(name: '/camera', page: () => Camerapage()),
       ],
     ),
   );

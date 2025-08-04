@@ -7,20 +7,27 @@ class CustomTextInput extends StatelessWidget {
   final String inputName;
   final String? inputContent;
   final bool securedInput;
-
+  final int? maxLength;
+  final TextInputType? keyboardType;
   const CustomTextInput({
     this.inputContent,
     required this.inputName,
     this.securedInput = false,
+    this.maxLength,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: inputName,
-
+      
+      maxLength: maxLength  ?? 50,
+      keyboardType: keyboardType?? TextInputType.text,
       obscureText: securedInput,
       decoration: InputDecoration(
+        counterText: '',
+        // filled: true,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         label: CustomText(
           content: inputContent ?? "",

@@ -1,3 +1,4 @@
+import 'package:connect/contr0ller/forget_pwd_controller.dart';
 import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
 class ForgetPasswordPage extends GetView {
-  const ForgetPasswordPage({super.key});
+  final ForgetPwdController forgetPwdController = Get.put(ForgetPwdController());
+
+  ForgetPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class ForgetPasswordPage extends GetView {
         children: [
           Flexible(
             child: FormBuilder(
-              
+              key: forgetPwdController.formKey,
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Column(
@@ -32,16 +35,28 @@ class ForgetPasswordPage extends GetView {
                       children: [
                         CustomTextInput(
                       inputContent: "Type in Your Email" , 
-                      inputName: "email"),
+                      inputName: "email",
+                      ),
                       ],
                     ),
                     // SizedBox(height: 20,),
-                    CustomButton(buttonText: "Submit",
-                    action: (){
-                      Get.toNamed('/otp');
-                    },
+                    Obx(() {
+                      return CustomButton(
+                        buttonText: forgetPwdController.loading.value
+                            ? "Loading"
+                            : "Submit",
+                        action: () {
+                          forgetPwdController.submitForm();
+                        },
+                        loading: forgetPwdController.loading.value,
+                      );
+                    }),
+                    // CustomButton(buttonText: "Submit",
+                    // action: (){
+                    //   forgetPwdController.submitForm();
+                    // },
                     
-                    )
+                    //)
                   ],
                 ),
               )

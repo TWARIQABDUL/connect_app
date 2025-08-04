@@ -32,19 +32,35 @@ class OtpValidation extends GetView {
                         children: [
                           SizedBox(
                             width: 50,
-                            child: CustomTextInput(inputName: "otp1"),
+                            child: CustomTextInput(
+                              inputName: "otp1",
+                              maxLength: 1,
+                              keyboardType: TextInputType.number,
+                              ),
                           ),
                           SizedBox(
                             width: 50,
-                            child: CustomTextInput(inputName: "otp2"),
+                            child: CustomTextInput(
+                              inputName: "otp2",
+                              maxLength: 1,
+                              keyboardType: TextInputType.number,
+                            ),
                           ),
                           SizedBox(
                             width: 50,
-                            child: CustomTextInput(inputName: "otp3"),
+                            child: CustomTextInput(
+                              inputName: "otp3",
+                              maxLength: 1,
+                              keyboardType: TextInputType.number,
+                            ),
                           ),
                           SizedBox(
                             width: 50,
-                            child: CustomTextInput(inputName: "otp4"),
+                            child: CustomTextInput(
+                              inputName: "otp4",
+                              maxLength: 1,
+                              keyboardType: TextInputType.number,
+                            ),
                           ),
                         ],
                       ),
