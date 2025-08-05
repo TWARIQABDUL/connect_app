@@ -9,11 +9,17 @@ import 'package:connect/pages/readarticle.dart';
 import 'package:connect/pages/register.dart';
 import 'package:connect/pages/welcomepage.dart';
 // import 'package:connect/pages/camerapage.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+Future<void> main() async{
+  await dotenv.load(fileName: ".env");
+  await Supabase.initialize(
+    url: dotenv.env['API_URL'] ?? '',
+    anonKey: dotenv.env['API_KEY'] ?? '',
+  );
   runApp(
     GetMaterialApp(
       color: Color.fromARGB(255, 226, 4, 4),

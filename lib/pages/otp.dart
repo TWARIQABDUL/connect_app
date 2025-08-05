@@ -1,10 +1,10 @@
 import 'package:connect/contr0ller/otp_controller.dart';
-import 'package:connect/widgets/custom_input.dart';
+// import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+// import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+// import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpValidation extends GetView {
@@ -45,7 +45,7 @@ class OtpValidation extends GetView {
                     length: 6,
                     onChanged: (value) {
                       otpController.otp.value = value;
-                      print("Code entered is $value");
+                      // print("Code entered is $value");
                     },
                     onCompleted: (value) {
                       otpController.otpValidation();

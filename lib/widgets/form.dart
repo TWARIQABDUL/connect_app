@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class FormWidget extends GetView {
-final LoginController loginController = Get.put(LoginController());
+  final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +17,29 @@ final LoginController loginController = Get.put(LoginController());
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            Obx(
+              () => CustomText(
+                content: loginController.responseMsg.value,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                textAlign: TextAlign.center,
+                color: loginController.isError.value ? Colors.red : Colors.green,
+              ),
+            ),
+            SizedBox(height: 10),
+
             CustomTextInput(
-              inputContent: "Email Or Phone Number", 
-              inputName: "email"),
+              inputContent: "Email Or Phone Number",
+              inputName: "email",
+            ),
             SizedBox(height: 30),
 
             CustomTextInput(
-              inputContent: "Password", 
+              inputContent: "Password",
               inputName: "pwd",
               securedInput: true,
-              ),
-              
+            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -40,23 +52,21 @@ final LoginController loginController = Get.put(LoginController());
                     color: Color(0XFF1B5E20),
                     fontWeight: FontWeight.w400,
                   ),
-                  
                 ),
               ],
             ),
+
             // SizedBox(height: 30),
-
-            Obx((){
+            Obx(() {
               return CustomButton(
-              buttonText: loginController.loading.value? "Loading":"Login",
-              action: (){
-                loginController.login();
-              },
-              loading: loginController.loading.value,
-
-            );
+                buttonText: loginController.loading.value ? "Loading" : "Login",
+                action: () {
+                  loginController.login();
+                },
+                loading: loginController.loading.value,
+              );
             }),
-           
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -73,15 +83,14 @@ final LoginController loginController = Get.put(LoginController());
               backGroundColor: Colors.black,
               iconColor: Colors.white,
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
             CustomFaButton(
               buttonText: "Sign Up with Google",
               icon: FaIcon(
                 FontAwesomeIcons.google,
                 color: Colors.red,
                 size: 30,
-
-                ),
+              ),
               backGroundColor: Colors.white,
               // iconColor: Colors.black,
               color: const Color.fromARGB(255, 0, 0, 0),

@@ -1,3 +1,4 @@
+import 'package:connect/contr0ller/register_controller.dart';
 import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends GetView {
+  final RegisterController registerController = Get.put(RegisterController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +31,19 @@ class RegisterPage extends GetView {
                 // Optional if CustomText supports it
               ),
               FormBuilder(
+                key: registerController.formsKey,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
+                      Obx(
+                        () => CustomText(
+                          content: registerController.responseMsg.value,
+                          color: registerController.isError.value
+                              ? Colors.red
+                              : Colors.green,
+                        ),
+                      ),
                       CustomTextInput(
                         inputContent: "Full Name",
                         inputName: "name",
@@ -40,8 +51,16 @@ class RegisterPage extends GetView {
                       SizedBox(height: 20),
 
                       CustomTextInput(
-                        inputContent: "Email or Phone Number",
+                        inputContent: "Email ",
+                        inputName: "email",
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      SizedBox(height: 20),
+
+                      CustomTextInput(
+                        inputContent: "Phone Number",
                         inputName: "phoneNb",
+                        keyboardType: TextInputType.phone,
                       ),
                       SizedBox(height: 20),
 
@@ -49,19 +68,27 @@ class RegisterPage extends GetView {
                         inputContent: "Password",
                         inputName: "pwd",
                         securedInput: true,
+                        keyboardType: TextInputType.visiblePassword,
                       ),
 
                       SizedBox(height: 20),
 
-                      CustomTextInput(
-                        inputContent: "Re-type Password",
-                        inputName: "rtpwd",
-                        securedInput: true,
+                      Obx(
+                        () => CustomTextInput(
+                          inputContent: "Re-type Password",
+                          inputName: "rtpwd",
+                          securedInput: true,
+                          prevPwd: registerController.password.value,
+                        ),
                       ),
 
                       SizedBox(height: 20),
                       // SizedBox(height: 30),
-                      CustomButton(buttonText: "Register"),
+                      CustomButton(
+                        buttonText: "Register",
+                        action: () => registerController.register(),
+                        loading: registerController.loading.value,
+                      ),
                     ],
                   ),
                 ),
@@ -90,7 +117,7 @@ class RegisterPage extends GetView {
                     backGroundColor: Colors.black,
                     iconColor: Colors.white,
                   ),
-                      SizedBox(height: 20),
+                  SizedBox(height: 20),
 
                   CustomFaButton(
                     buttonText: "Sign Up with Google",
@@ -103,7 +130,6 @@ class RegisterPage extends GetView {
                     // iconColor: Colors.black,
                     color: const Color.fromARGB(255, 0, 0, 0),
                   ),
-                  
                 ],
               ),
             ],
