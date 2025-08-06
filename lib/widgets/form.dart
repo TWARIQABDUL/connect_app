@@ -1,13 +1,21 @@
+import 'package:connect/contr0ller/formvalidator_controller.dart';
+import 'package:connect/contr0ller/input_controller.dart';
 import 'package:connect/contr0ller/loginController.dart';
 import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class FormWidget extends GetView {
   final LoginController loginController = Get.put(LoginController());
+  // final InputController inputController = Get.put(InputController());
+  final FormvalidatorController formvalidatorController = Get.put(
+    FormvalidatorController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,9 @@ class FormWidget extends GetView {
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 textAlign: TextAlign.center,
-                color: loginController.isError.value ? Colors.red : Colors.green,
+                color: loginController.isError.value
+                    ? Colors.red
+                    : Colors.green,
               ),
             ),
             SizedBox(height: 10),
@@ -31,6 +41,7 @@ class FormWidget extends GetView {
             CustomTextInput(
               inputContent: "Email Or Phone Number",
               inputName: "email",
+              validator: formvalidatorController.validateForm('email'),
             ),
             SizedBox(height: 30),
 
@@ -38,6 +49,11 @@ class FormWidget extends GetView {
               inputContent: "Password",
               inputName: "pwd",
               securedInput: true,
+              validator: [
+                FormBuilderValidators.required(),
+                // FormBuilderValidators.minLength(6),
+              ],
+              // validator:
             ),
 
             Row(

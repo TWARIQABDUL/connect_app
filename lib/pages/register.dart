@@ -1,13 +1,18 @@
+import 'package:connect/contr0ller/formvalidator_controller.dart';
 import 'package:connect/contr0ller/register_controller.dart';
 import 'package:connect/widgets/custom_input.dart';
 import 'package:connect/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends GetView {
   final RegisterController registerController = Get.put(RegisterController());
+  final FormvalidatorController formvalidatorController = Get.put(
+    FormvalidatorController(),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +52,7 @@ class RegisterPage extends GetView {
                       CustomTextInput(
                         inputContent: "Full Name",
                         inputName: "name",
+                        validator: formvalidatorController.validateForm('name'),
                       ),
                       SizedBox(height: 20),
 
@@ -54,6 +60,9 @@ class RegisterPage extends GetView {
                         inputContent: "Email ",
                         inputName: "email",
                         keyboardType: TextInputType.emailAddress,
+                        validator: formvalidatorController.validateForm(
+                          'email',
+                        ),
                       ),
                       SizedBox(height: 20),
 
@@ -64,21 +73,48 @@ class RegisterPage extends GetView {
                       ),
                       SizedBox(height: 20),
 
-                      CustomTextInput(
-                        inputContent: "Password",
-                        inputName: "pwd",
-                        securedInput: true,
-                        keyboardType: TextInputType.visiblePassword,
+                      Obx(
+                        () => Column(
+                          children: [
+                            CustomTextInput(
+                              inputContent: "Type Password",
+                              inputName: "pwd",
+                              securedInput: true,
+                              onChanged: (value) {
+                                registerController.userpwd.value = value ?? '';
+                              },
+                              validator: formvalidatorController.validateForm(
+                                'pwd',
+                              ),
+                              prevPwd: registerController.userpwd.value,
+                            ),
+                          ],
+                        ),
                       ),
 
                       SizedBox(height: 20),
 
                       Obx(
-                        () => CustomTextInput(
-                          inputContent: "Re-type Password",
-                          inputName: "rtpwd",
-                          securedInput: true,
-                          prevPwd: registerController.password.value,
+                        () => Column(
+                          children: [
+                            CustomTextInput(
+                              inputContent: "Re-type Password",
+                              inputName: "rtpwd",
+                              securedInput: true,
+                              onChanged: (value) {
+                                registerController.confirmPassword.value =
+                                    value ?? '';
+                              },
+                              validator: [
+                                FormBuilderValidators.equal(
+                                  registerController.userpwd.value,
+                                  errorText: 'Passwords do not match',
+                                ),
+                                // FormBuilderValidators.minLength(6),
+                              ],
+                              prevPwd: registerController.userpwd.value,
+                            ),
+                          ],
                         ),
                       ),
 
