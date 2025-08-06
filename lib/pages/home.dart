@@ -10,6 +10,7 @@ class HomePage extends GetView {
   // List<String> list = <String>['One', 'Two', 'Three', 'Four'];
   @override
   Widget build(BuildContext context) {
+    newsControler.fetchNews();
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -96,9 +97,9 @@ class HomePage extends GetView {
             child: Obx(() {
               return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: newsControler.myNewsList.length,
+                itemCount: newsControler.dynNewsList.length,
                 itemBuilder: (context, index) {
-                  final news = newsControler.myNewsList[index];
+                  final news = newsControler.dynNewsList[index];
 
                   return NewsContainer(
                     image: news.imagepath,
